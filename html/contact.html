@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Official Site</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="contact-page">
+
+  <!-- ===== ヘッダー ===== -->
+  <header>
+    <h1>Official Site</h1>
+
+    <!-- ハンバーガーメニュー -->
+    <div class="menu-icon" id="menuIcon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- ナビゲーション -->
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="topic.html">Topic</a>
+      <a href="profile.html">Profile</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="goods.html">Goods</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ===== メイン ===== -->
+  <main>
+    <h2 class="big-title">Contact</h2>
+    <p>お問い合わせ・お仕事のご依頼は、以下のフォームまたはSNSのDMからお願いします。</p>
+
+    <section class="card">
+      <form action="#" method="post">
+        <div style="margin-bottom: 12px;">
+          <label for="name">お名前：</label><br>
+          <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #fff; background: #000; color: #fff;">
+        </div>
+        <div style="margin-bottom: 12px;">
+          <label for="email">メールアドレス：</label><br>
+          <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #fff; background: #000; color: #fff;">
+        </div>
+        <div style="margin-bottom: 12px;">
+          <label for="message">メッセージ：</label><br>
+          <textarea id="message" name="message" rows="6" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #fff; background: #000; color: #fff;"></textarea>
+        </div>
+        <button type="submit" class="submit" style="padding: 10px 20px; font-size: 1em;">送信</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- ===== フッター ===== -->
+  <footer>
+    <div class="sns-links">
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+      <a href="#">YouTube</a>
+    </div>
+    <p>&copy; 2025 Official Site. All rights reserved.</p>
+  </footer>
+
+  <!-- ===== JS ===== -->
+  <script>
+    const menuIcon = document.getElementById('menuIcon');
+    const navMenu = document.getElementById('navMenu');
+
+    menuIcon.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      menuIcon.classList.toggle('open');
+      document.body.classList.toggle('menu-open');
+    });
+  </script>
+</body>
+</html>

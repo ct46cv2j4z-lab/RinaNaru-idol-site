@@ -1,0 +1,162 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+/* ===== ヘッダー ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  background-color: #111;
+  border-bottom: 1px solid #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 1.6rem;
+  background: linear-gradient(90deg, #5bc0ff, #ff6ec7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+nav {
+  display: flex;
+  gap: 16px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #5bc0ff;
+}
+
+/* ===== ハンバーガーメニュー ===== */
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+.menu-icon span {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #111;
+    padding: 20px;
+    border: 1px solid #fff;
+    border-radius: 8px;
+  }
+  nav.active {
+    display: flex;
+  }
+  .menu-icon {
+    display: flex;
+  }
+}
+
+/* ===== メイン ===== */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* ===== グラデ文字タイトル ===== */
+h2, .big-title {
+  font-size: 2em;
+  background: linear-gradient(90deg,#ff6ec7, #5bc0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* ===== カード・セクション ===== */
+.card, section, aside {
+  background-color: #111;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+/* ===== リンク・ボタン ===== */
+a, .pill, .submit {
+  color: #fff;
+  background-color: #111;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  padding: 4px 10px;
+  text-decoration: none;
+}
+a:hover, .pill:hover, .submit:hover {
+  background-color: #333;
+}
+
+/* ===== ミュージックビデオ ===== */
+.mv-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid #fff;
+  margin-bottom: 40px;
+}
+
+.mv-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== フッター ===== */
+footer {
+  background: #111;
+  text-align: center;
+  padding: 30px 0;
+  border-top: 1px solid #fff;
+}
+
+footer .sns-links {
+  margin-bottom: 10px;
+}
+footer .sns-links a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+footer .sns-links a:hover {
+  color: #5bc0ff;
+}
+footer p {
+  font-size: 0.9em;
+  color: #aaa;
+}
