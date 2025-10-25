@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rina - Home</title>
+
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- フォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap" rel="stylesheet">
+
+  <!-- JSをdeferで読込（bodyの最後でもOK） -->
+  <script src="./js/menu.js" defer></script>
+</head>
+
+<body>
+
+  <!-- ヘッダー・バーガー -->
+  <header>
+    <div class="logo">Rina</div>
+    <div class="menu-btn" id="menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- ナビゲーション -->
+  <!-- navのidはmenuではなくnavに変更（JS側と一致させる） -->
+  <nav id="nav" class="hidden">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="topic.html">Topic</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="goods.html">Goods</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- 星空レイヤー -->
+  <div id="stars"></div>
+  <div id="stars2"></div>
+  <div id="stars3"></div>
+
+  <!-- メインコンテンツ -->
+  <main>
+    <section class="concept">
+      <h2 class="concept-title">あの星だって写真には綺麗に映んないよ</h2>
+      <p>~konseputo~</p>
+    </section>
+
+    <!-- MV埋め込み -->
+    <section class="mv">
+      <iframe width="560" height="315"
+        src="https://www.youtube.com/embed/AanfKNatAqk?si=2mbwjhNfrj3NQIj-"
+        title="YouTube video player"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <footer>
+    <div class="footer-logo">Rina</div>
+    <div class="sns">
+      <a href="https://twitter.com/" target="_blank">Twitter</a>
+      <a href="https://instagram.com/" target="_blank">Instagram</a>
+      <a href="https://youtube.com/" target="_blank">YouTube</a>
+    </div>
+  </footer>
+
+</body>
+</html>

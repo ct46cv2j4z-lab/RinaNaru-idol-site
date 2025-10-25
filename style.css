@@ -1,162 +1,513 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: "Noto Sans JP", sans-serif;
-  background-color: #000;
-  color: #fff;
-}
+/* ======== 基本設定 ======== */
+body { margin:0; font-family:'Noto Sans JP',sans-serif; color:#fff; background:rgb(0, 0, 0); overflow-x:hidden; }
+h1,h2 { background: linear-gradient(90deg,#ff79c6,#ffffff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 
-/* ===== ヘッダー ===== */
+/* タイトル文字 */
+.title { text-align:center; margin-top:50vh; font-size:3em; position:relative; z-index:10; }
+
+
+
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 20px;
-  background-color: #111;
-  border-bottom: 1px solid #fff;
-  position: sticky;
+  padding: 20px 40px;        /* 上下20px、左右40pxに増やす */
+  position: fixed;
   top: 0;
-  z-index: 100;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  height: 70px;              /* 高さを70pxに増やす */
+  box-sizing: border-box;
 }
 
-header h1 {
-  font-size: 1.6rem;
-  background: linear-gradient(90deg, #5bc0ff, #ff6ec7);
+.logo {
+  font-size: 2em;            /* ロゴ文字も大きくする */
+  font-weight: bold;
+
+  /* グラデーション文字 */
+  background: linear-gradient(90deg, #ff79c6, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-nav {
+/* バーガー */
+.menu-btn {
+  width: 35px;               /* 幅を少し大きく */
+  height: 25px;              /* 高さを少し大きく */
   display: flex;
-  gap: 16px;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
+.menu-btn span {
+  display: block;
+  height: 4px;               /* 線も少し太くする */
+  background: #fff;
+  border-radius: 2px;
   transition: 0.3s;
 }
 
-nav a:hover {
-  color: #5bc0ff;
+.menu-btn:hover span {
+  background: #ff79c6; /* ピンク */
 }
 
-/* ===== ハンバーガーメニュー ===== */
-.menu-icon {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-.menu-icon span {
-  width: 25px;
-  height: 3px;
-  background-color: #fff;
-  margin: 4px 0;
-  transition: 0.4s;
-}
 
-@media (max-width: 768px) {
-  nav {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background-color: #111;
-    padding: 20px;
-    border: 1px solid #fff;
-    border-radius: 8px;
-  }
-  nav.active {
-    display: flex;
-  }
-  .menu-icon {
-    display: flex;
-  }
-}
 
-/* ===== メイン ===== */
-main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 60px 20px;
-  text-align: center;
-}
 
-/* ===== グラデ文字タイトル ===== */
-h2, .big-title {
-  font-size: 2em;
-  background: linear-gradient(90deg,#ff6ec7, #5bc0ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 20px;
+/* ロゴ */
+.logo {
+  font-size: 1.5em;
   font-weight: bold;
 }
 
-/* ===== カード・セクション ===== */
-.card, section, aside {
-  background-color: #111;
-  border: 1px solid #fff;
-  border-radius: 12px;
-  padding: 12px;
-  margin-bottom: 16px;
+/* バーガーボタン */
+.menu-btn {
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
-/* ===== リンク・ボタン ===== */
-a, .pill, .submit {
-  color: #fff;
-  background-color: #111;
-  border: 1px solid #fff;
-  border-radius: 6px;
-  padding: 4px 10px;
-  text-decoration: none;
-}
-a:hover, .pill:hover, .submit:hover {
-  background-color: #333;
+/* 三本線 */
+.menu-btn span {
+  display: block;
+  height: 3px;
+  background: #fff;   /* 白で必ず見える */
+  border-radius: 2px;
+  transition: 0.3s;
 }
 
-/* ===== ミュージックビデオ ===== */
-.mv-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
+/* 開いたときのアニメーション */
+.menu-btn.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+.menu-btn.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+
+
+/* ナビゲーション */
+nav { position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.95); display:flex; justify-content:center; align-items:center; z-index:9; }
+nav.hidden { display:none; }
+nav ul { display:grid; grid-template-columns:repeat(2,150px); gap:20px; list-style:none; text-align:center; }
+nav a { color:#fff; text-decoration:none; font-size:1.5em; transition:0.3s; }
+nav a:hover { color:#eb82d8; }
+
+
+
+/* ======== 星空レイヤー：幻想的でキラキラ ======== */
+#stars, #stars2, #stars3, #stars4, #stars5 {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background: transparent;
   overflow: hidden;
-  border-radius: 12px;
-  border: 1px solid #fff;
+}
+
+/* 星を色つきに（白〜ピンク〜水色のミックス） */
+#stars::after, #stars2::after, #stars3::after, #stars4::after, #stars5::after {
+  content: "";
+  position: absolute;
+  background: transparent;
+  border-radius: 50%;
+}
+
+/* 一番小さい星：量多くてチラチラ */
+#stars::after {
+  width: 1px;
+  height: 1px;
+  opacity: 0.9;
+  box-shadow:
+    30px 80px #fff, 80px 200px #ffb6e1, 150px 300px #a0e8ff, 220px 150px #ffffff,
+    270px 400px #ff99c9, 320px 250px #b6e8ff, 370px 50px #fff, 430px 100px #ffa8f5,
+    480px 350px #d1f0ff, 540px 180px #ffffff, 600px 240px #ffd6f3, 650px 300px #c0f2ff,
+    700px 60px #fff, 750px 200px #ff9bd5, 800px 400px #aaf0ff, 850px 100px #ffffff,
+    900px 250px #ffacef, 950px 350px #a5ecff, 1000px 150px #fff, 1100px 220px #ffd0f2;
+  animation: twinkle 3s infinite ease-in-out alternate, starDrift 200s linear infinite;
+}
+
+/* 中くらいの星：柔らかく輝く */
+#stars2::after {
+  width: 2px;
+  height: 2px;
+  opacity: 0.8;
+  box-shadow:
+    60px 120px #ffffff, 150px 180px #ffacef, 300px 260px #b6eaff, 450px 320px #fff,
+    600px 100px #ffd0f2, 750px 280px #fff, 900px 200px #ffb6e1, 1050px 300px #b6f5ff,
+    1200px 150px #ffffff, 1350px 350px #ffbce9;
+  animation: twinkle 4s infinite ease-in-out alternate, starDrift 350s linear infinite;
+}
+
+/* 大きめの星：強く光る＆ゆっくり動く */
+#stars3::after {
+  width: 3px;
+  height: 3px;
+  opacity: 1;
+  box-shadow:
+    200px 100px #fff, 500px 150px #ff8ed8, 800px 250px #a0eaff, 1100px 100px #fff,
+    1300px 300px #ffb6e1, 1600px 200px #b3f2ff;
+  animation: twinkle 5s infinite ease-in-out alternate, starDrift 500s linear infinite;
+}
+
+/* 小さな星がふわふわ瞬く */
+#stars4::after {
+  width: 1.5px;
+  height: 1.5px;
+  opacity: 0.7;
+  box-shadow:
+    100px 100px #ffd6f3, 250px 180px #fff, 400px 250px #b0eaff, 550px 350px #ffb6e1,
+    700px 150px #ffffff, 850px 250px #a5e9ff, 1000px 300px #ffb6e1, 1150px 200px #ffffff;
+  animation: twinkle 2.5s infinite ease-in-out alternate, starDrift 250s linear infinite;
+}
+
+/* 一番遠い星（ゆっくり流れる） */
+#stars5::after {
+  width: 2px;
+  height: 2px;
+  opacity: 0.4;
+  box-shadow:
+    120px 350px #fff, 300px 150px #ffacef, 480px 320px #b6eaff, 720px 200px #ffffff,
+    900px 250px #ffd6f3, 1080px 100px #a5e9ff, 1250px 300px #ffffff, 1400px 180px #ffb6e1;
+  animation: twinkle 6s infinite ease-in-out alternate, starDrift 800s linear infinite;
+}
+
+/* 星が上方向にゆっくり動く */
+@keyframes starDrift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-800px); }
+}
+
+/* きらめき効果（明滅＋ランダム感） */
+@keyframes twinkle {
+  0% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+  100% { opacity: 0.5; transform: scale(1); }
+}
+
+
+
+/* コンセプト */
+.concept { max-width:700px; margin:80px auto; text-align:center; }
+
+/* MV埋め込み */
+.mv iframe { width:90%; max-width:560px; border:2px solid white; border-radius:12px; display:block; margin:30px auto; }
+
+/* フッター */
+footer { text-align:center; padding:40px 0; border-top:1px solid #fff; margin-top:60px; }
+.footer-logo { font-size:1.5em; margin-bottom:10px; }
+.sns a { margin:0 10px; color:white; text-decoration:none; }
+.sns a:hover { color:#fc79ba; }
+
+
+
+/* ロゴ */
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  
+  /* グラデーション文字 */
+  background: linear-gradient(90deg, #fd7fc6, #ffffff); /* ピンク→水色 */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
+
+.topics {
+  max-width: 800px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.topics article {
+  border: 2px solid white;    /* 白線で囲む */
+  border-radius: 10px;         /* 角を丸くする */
+  padding: 20px;               /* 内側の余白 */
+  margin-bottom: 20px;         /* 記事間の余白 */
+  background: rgba(255,255,255,0.05); /* 背景を少し透過で浮かせる */
+  transition: transform 0.3s;
+}
+
+.topics article:hover {
+  transform: scale(1.02);      /* ホバーで少し拡大 */
+}
+
+
+
+
+.profiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 80px auto;
+}
+
+
+/* ======== メンバー共通デザイン ======== */
+.member {
+  width: 250px;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  transition: transform 0.3s;
+}
+
+.member:hover {
+  transform: scale(1.05);
+}
+
+.member img {
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.member .sns a {
+  margin: 0 5px;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.member .sns a:hover {
+  color: #ff79c6;
+}
+
+/* ======== メンバーカラー設定 ======== */
+
+/* Rina：ピンク系 */
+.member.rina {
+  border-color: #ff79c6;
+  background: rgba(255, 121, 198, 0.1);
+}
+
+.member.rina .sns a {
+  color: #ff79c6;
+}
+
+.member.rina .sns a:hover {
+  background: #ff79c6;
+  color: white;
+  border-radius: 5px;
+  padding: 3px 6px;
+}
+
+.member.rina {
+  border: 2px solid #ff79c6 !important;
+}
+
+
+/* ======== メンバー名の色統一 ======== */
+
+/* Rina（ピンク） */
+.member.rina h2 {
+  background: none; /* 全体グラデーション解除 */
+  color: #ff79c6;   /* ピンクに統一 */
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* body 全体 */
+body {
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #fff;
+  background: rgb(0, 0, 0);
+  overflow-x: hidden;
+
+  /* ページ全体の最小高さを100vhにして下まで伸ばす */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* main を柔軟に伸ばす */
+main {
+  flex: 1; /* フッターまでの余白を自動で確保 */
+  padding-top: 100px; /* ヘッダー高さ分の余白 */
+  text-align: center;
+}
+
+
+
+
+.concept {
+  max-width: 700px;
+  margin: 80px auto;
+  padding: 20px;                  /* 内側余白 */
+  border: 2px solid white;        /* 白線で囲む */
+  border-radius: 12px;            /* 角丸 */
+  background: rgba(255,255,255,0.05); /* 背景を少し透過で浮かせる */
+  text-align: center;
+}
+
+.concept h2 {
+  margin-bottom: 15px;
+  font-size: 1.8em;
+}
+
+.concept p {
+  font-size: 1.2em;
+  line-height: 1.5;
+}
+
+
+
+
+
+
+/* 共通ボタン */
+button, .btn {
+  border: 2px solid white;      /* 白枠 */
+  background: transparent;       /* 背景透明 */
+  color: white;                  /* 文字白 */
+  padding: 10px 25px;            /* 内側余白 */
+  border-radius: 8px;            /* 角丸 */
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;         /* aタグのボタン化用 */
+  display: inline-block;
+}
+
+button:hover, .btn:hover {
+  background: rgba(255,255,255,0.1); /* ちょっと浮かせる */
+  border-color: #ff99f0;             /* ホバーで色変化 */
+  color: #ff8dec;
+}
+
+
+
+
+
+
+/* フッターSNSリンクを白枠で囲む */
+footer .sns a {
+  margin: 0 10px;
+  padding: 5px 12px;
+  border: 1px solid white;
+  border-radius: 6px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+footer .sns a:hover {
+  color: #b16691;
+  border-color: #63c0fa;
+}
+
+
+
+/*コンセプトのフォント*/
+
+.concept-title {
+  font-family: 'Hachi Maru Pop', sans-serif;
+}
+
+
+
+
+
+/* ===== Contactページ用 ===== */
+.contact-section {
+  text-align: center;
+  color: #fff;
+  font-family: 'Hachi Maru Pop', cursive;
+  margin-top: 100px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.contact-section h1 {
+  font-size: 2.5em;
+  background: linear-gradient(90deg, #f791d3, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.contact-section p {
+  font-size: 1.1em;
+  color: #e0e0e0;
   margin-bottom: 40px;
 }
 
-.mv-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
-/* ===== フッター ===== */
-footer {
-  background: #111;
-  text-align: center;
-  padding: 30px 0;
-  border-top: 1px solid #fff;
-}
-
-footer .sns-links {
-  margin-bottom: 10px;
-}
-footer .sns-links a {
+.contact-form input,
+.contact-form textarea {
+  width: 80%;
+  max-width: 500px;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
   color: #fff;
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
+  font-size: 1em;
+  backdrop-filter: blur(5px);
+  transition: 0.3s ease;
 }
-footer .sns-links a:hover {
-  color: #5bc0ff;
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 10px rgba(249, 130, 219, 0.5);
 }
-footer p {
-  font-size: 0.9em;
-  color: #aaa;
+
+.contact-form button {
+  background: linear-gradient(90deg, #ff79c6, #ffffff);
+  border: none;
+  color: white;
+  font-size: 1.1em;
+  padding: 12px 40px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 10px;
+}
+
+.contact-form button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
 }
